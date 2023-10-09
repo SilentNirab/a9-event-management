@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
 
@@ -38,7 +39,15 @@ const SignUp = () => {
         // signup with email and password
         signUp(email, password)
             .then(result => {
-                console.log(result.user);
+                // user proflie update
+                updateProfile(result.user, {
+                    displayName: name, photoURL: imgUrl
+                  }).then(() => {
+                    
+                    console.log("Profile updated!");
+                  }).catch((error) => {
+                    console.error(error);
+                  });
                 // naviget after login
                 navigate(location?.state ? location.state : "/");
             })

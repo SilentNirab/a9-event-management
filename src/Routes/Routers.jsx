@@ -29,7 +29,7 @@ import ContactUs from "../ContactUs/ContactUs";
         },
         {
           path: "/contactus",
-          element: <ContactUs></ContactUs>
+          element: <PrivetRoute><ContactUs></ContactUs></PrivetRoute>
         },
         {
             path: "/about",
