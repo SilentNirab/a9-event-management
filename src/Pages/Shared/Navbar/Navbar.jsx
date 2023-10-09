@@ -1,31 +1,39 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handelSignOut = () => {
+        logOut()
+        .then()
+        .catch()
+    }
     const Navlinks = <>
-            <li className="text-lg font-bold text-[#DF0626]"><Link to={"/"} className={({ isActive, isPending }) =>
-                            isActive
-                                ? "border-[#DF0626] border-b-2 text-[#DF0626] text-lg font-bold px-1 py-1"
-                                : isPending 
-                                    ? "pending "
-                                    : ""
-                        }>Home</Link></li>
-            <li className="text-lg font-bold text-[#DF0626]"><NavLink to={'/event'} className={({ isActive, isPending }) =>
-                            isActive
-                                ? "border-[#DF0626] border-b-2 text-[#DF0626] text-lg font-bold px-1 py-1"
-                                : isPending 
-                                    ? "pending "
-                                    : ""
-                        }>Meetings</NavLink></li>
-            <li className="text-lg font-bold text-[#DF0626]"><NavLink to={'/about'} className={({ isActive, isPending }) =>
-                            isActive
-                                ? "border-[#DF0626] border-b-2 text-[#DF0626] text-lg font-bold px-1 py-1"
-                                : isPending 
-                                    ? "pending "
-                                    : ""
-                        }>About</NavLink></li>
-        </>
+        <li className="text-lg font-bold text-black"><NavLink to={'/'} className={({ isActive, isPending }) =>
+            isActive
+                ? "border-[#F5A425] border-b-2 text-black text-lg font-bold px-1 py-1"
+                : isPending
+                    ? "pending "
+                    : ""
+        }>Home</NavLink></li>
+        <li className="text-lg font-bold text-black"><NavLink to={'/event'} className={({ isActive, isPending }) =>
+            isActive
+                ? "border-[#F5A425] border-b-2 text-black text-lg font-bold px-1 py-1"
+                : isPending
+                    ? "pending "
+                    : ""
+        }>Meetings</NavLink></li>
+        <li className="text-lg font-bold text-black"><NavLink to={'/about'} className={({ isActive, isPending }) =>
+            isActive
+                ? "border-[#F5A425] border-b-2 text-black text-lg font-bold px-1 py-1"
+                : isPending
+                    ? "pending "
+                    : ""
+        }>About</NavLink></li>
+    </>
     return (
-        
+
         <div className="py-5">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
@@ -38,18 +46,24 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to={"/"}>
-                         <a className=" text-lx md:text-2xl font-bold" ><span className="text-[#F5A425]">EDU</span> CONFERENC</a>
+                        <a className=" text-lx md:text-2xl font-bold" ><span className="text-[#F5A425]">EDU</span> CONFERENC</a>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu-horizontal px-1 space-x-2">
-                       {Navlinks}
+                        {Navlinks}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to={"/login"}>
-                        <a className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">LogIn</a>
-                    </Link>
+                    {
+                        user ?
+                            <button onClick={handelSignOut} className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">Sign Out</button>
+                            :
+                            <Link to={"/login"}>
+                                <a className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">LogIn</a>
+                            </Link>
+                    }
+
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ const Header = () => {
                 <Navbar></Navbar>
                 <div className="md:h-full flex items-center px-2">
                     <div className="md:max-w-screen-sm ">
-                        <h1 className="text-5xl font-bold"><span className="text-[#F5A425]">Developer</span><br />
+                        <h1 className="text-6xl font-bold"><span className="text-[#F5A425] text-8xl">Developer</span><br />
                             Conference 2023</h1>
                         <h3 className="py-5 text-2xl font-semibold">Comming Soon</h3>
                         
