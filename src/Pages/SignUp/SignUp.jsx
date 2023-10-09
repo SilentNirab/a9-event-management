@@ -3,6 +3,8 @@ import Navbar from "../Shared/Navbar/Navbar";
 import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
 
@@ -18,6 +20,21 @@ const SignUp = () => {
         const email = form.get('email');
         const password = form.get('password');
 
+        if (password.length < 6) {
+            toast("Password should be at least 6 characters or longer!");
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast('Your password should have at least one upper case characters!');
+            return;
+        }
+        else if (!/(?=.*[@$!%*#?&])/.test(password)) {
+            toast('Your password should have at least one special characters.');
+            return;
+        }
+        else{
+            toast("Successfuly Sign Up");
+        }
         // signup with email and password
         signUp(email, password)
             .then(result => {
@@ -87,7 +104,7 @@ const SignUp = () => {
 
                     </div>
                 </form>
-
+                <ToastContainer />
             </div>
         </div>
     );

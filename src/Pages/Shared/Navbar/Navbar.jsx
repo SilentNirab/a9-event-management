@@ -2,13 +2,16 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import defaultUserImage from "../../../assets/Images/user.png"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     console.log(user);
     const handelSignOut = () => {
         logOut()
-        .then()
+        .then(()=>{
+            toast("Log Out Sucessfuly")
+        })
         .catch()
     }
     const Navlinks = <>
@@ -19,13 +22,13 @@ const Navbar = () => {
                     ? "pending "
                     : ""
         }>Home</NavLink></li>
-        <li className="text-lg font-bold text-black"><NavLink to={'/meetings'} className={({ isActive, isPending }) =>
+        <li className="text-lg font-bold text-black"><NavLink to={'/contactus'} className={({ isActive, isPending }) =>
             isActive
                 ? "border-[#F5A425] border-b-2 text-black text-lg font-bold px-1 py-1"
                 : isPending
                     ? "pending "
                     : ""
-        }>Meetings</NavLink></li>
+        }>Contact Us</NavLink></li>
         <li className="text-lg font-bold text-black"><NavLink to={'/about'} className={({ isActive, isPending }) =>
             isActive
                 ? "border-[#F5A425] border-b-2 text-black text-lg font-bold px-1 py-1"
@@ -77,7 +80,7 @@ const Navbar = () => {
                                 <button className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">LogIn</button>
                             </Link>
                     }
-
+                        <ToastContainer></ToastContainer>
                 </div>
             </div>
         </div>
