@@ -5,6 +5,7 @@ import defaultUserImage from "../../../assets/Images/user.png"
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    console.log(user);
     const handelSignOut = () => {
         logOut()
         .then()
@@ -56,7 +57,17 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <img src={defaultUserImage} alt="user-image" />
+                   
+                    {
+                        user ? 
+                        <div className="flex items-center">
+                            <p className="text-md font-bold">{user.displayName}</p>
+                            <img className="w-10 mx-2 rounded-full" src={user.photoURL} alt="user-image" /> 
+                        </div>
+
+                        : 
+                        <img className="w-10 pr-2 rounded" src={defaultUserImage} alt="" />
+                    }
                     {
                         user ?
                             

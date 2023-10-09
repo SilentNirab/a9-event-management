@@ -33,7 +33,7 @@ import PrivetRoute from "../Provider/PrivateRoute";
         },
         {
             path: "/about",
-            element: <About></About>
+            element: <PrivetRoute><About></About></PrivetRoute>
         },
         {
           path: "/login",
