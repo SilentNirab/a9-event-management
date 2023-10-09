@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import defaultUserImage from "../../../assets/Images/user.png"
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const Navbar = () => {
                     ? "pending "
                     : ""
         }>Home</NavLink></li>
-        <li className="text-lg font-bold text-black"><NavLink to={'/event'} className={({ isActive, isPending }) =>
+        <li className="text-lg font-bold text-black"><NavLink to={'/meetings'} className={({ isActive, isPending }) =>
             isActive
                 ? "border-[#F5A425] border-b-2 text-black text-lg font-bold px-1 py-1"
                 : isPending
@@ -46,7 +47,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to={"/"}>
-                        <a className=" text-lx md:text-2xl font-bold" ><span className="text-[#F5A425]">EDU</span> CONFERENC</a>
+                        <button className=" text-lx md:text-2xl font-bold" ><span className="text-[#F5A425]">EDU</span> CONFERENCE</button>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -55,12 +56,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <img src={defaultUserImage} alt="user-image" />
                     {
                         user ?
+                            
                             <button onClick={handelSignOut} className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">Sign Out</button>
                             :
                             <Link to={"/login"}>
-                                <a className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">LogIn</a>
+                                <button className="bg-[#F5A425] text-white text-lg font-bold px-4 py-2 rounded-md">LogIn</button>
                             </Link>
                     }
 

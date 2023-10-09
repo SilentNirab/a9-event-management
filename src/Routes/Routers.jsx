@@ -7,11 +7,15 @@ import About from "../Pages/About/About";
 import EventDetails from "../Pages/EventDetails/EventDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Meetings from "../Pages/Meetings/Meetings";
+import PrivetRoute from "../Provider/PrivateRoute";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children:[
         {
             path: "/",
@@ -20,8 +24,12 @@ import SignUp from "../Pages/SignUp/SignUp";
         },
         {
             path: "/event/:id",
-            element: <EventDetails></EventDetails>,
+            element: <PrivetRoute><EventDetails></EventDetails></PrivetRoute>,
             loader: ()=>fetch('/event.json')
+        },
+        {
+          path: "/meetings",
+          element: <Meetings></Meetings>
         },
         {
             path: "/about",

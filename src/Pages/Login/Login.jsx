@@ -1,39 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link,  useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { FaGoogle } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+    
     const {signIn,googleSignin} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const handelSignIn = e =>{
         e.preventDefault();
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password);
+       
+        // signin with email and password
         signIn(email, password)
         .then(result =>{
             console.log(result.user.email);
+             // naviget after login
+             navigate(location?.state ? location.state : "/");
         })
         .catch(error =>{
             console.error(error);
         })
         
-        signIn(email, password)
-        .then(result=>{
-            console.log(result.user);
-        })
-        .catch(error=>{
-            console.error(error);
-        })
     };
-    
+    //Login with google
     const handelGoogle = () =>{
         googleSignin()
         .then(result =>{
             console.log(result.user);
+             // naviget after login
+             navigate(location?.state ? location.state : "/");
         })
         .catch(error =>{
             console.error(error);
