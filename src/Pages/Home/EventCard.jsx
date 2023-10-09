@@ -14,7 +14,7 @@ const EventCard = ({ event }) => {
                     <h2 className="card-title">{title}</h2>
                     <p>{details.slice(0, 100)}...</p>
                     <div className="card-actions justify-between">
-                    <span className='bg-black p-4 text-white'>{date}</span>
+                    <span className='bg-black px-4 py-2 text-white'>{date}</span>
                         <Link to={`/event/${id}`}>
                             <button className="bg-[#F5A425] text-white text-md font-bold px-4 py-2 rounded-md">View Details</button>
                         </Link>

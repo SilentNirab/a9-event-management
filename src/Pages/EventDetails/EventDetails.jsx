@@ -21,13 +21,13 @@ const EventDetails = () => {
                         <p className='absolute bottom-0 left-0 bg-black text-white font-bold text-lg p-4'>${price}</p>
                     </div>
                     <div className="card-body">
-                       <div className="">
-                       <span className='flex items-center text-lg '><FaCalendar></FaCalendar>:{date}</span>
-                        <button className='bg-[#F5A425] text-white text-md font-bold px-4 py-2 rounded-md'>Book Now</button>
-                       </div>
+                        <div className=" flex justify-between">
+                            <span className='flex items-center text-lg '><FaCalendar></FaCalendar>:{date}</span>
+                            <button className='bg-[#F5A425] text-white text-md font-bold px-4 py-2 rounded-md'>Book Now</button>
+                        </div>
                         <h2 className="card-title text-3xl ">{title}</h2>
                         <p>{details}</p>
-                        
+
                     </div>
                 </div>
             </div>

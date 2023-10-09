@@ -9,11 +9,11 @@ const SignUp = () => {
         const handelSignUp = e =>{
             e.preventDefault();
             const form = new FormData(e.currentTarget);
+            const name = form.get('name');
+            const imgUrl = form.get('imgUrl');
             const email = form.get('email');
-            const password = form.get('password');
-            console.log(email,password);
-            
-            signUp(email, password)
+            const password = form.get('password');        
+            signUp(name,imgUrl,email, password)
             .then(result=>{
                 console.log(result.user);
             })
@@ -30,18 +30,18 @@ const SignUp = () => {
                     <h3 className="text-3xl text-white font-bold text-center py-8">Sign Up</h3>
                 </div>
                 <form onSubmit={handelSignUp} className="card-body 2">
-                    {/* <div className="form-control">
+                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" placeholder="Name" className="input input-bordered" required />
+                        <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Image URL</span>
                         </label>
-                        <input type="text" placeholder="Image url" className="input input-bordered" required />
-                    </div> */}
+                        <input type="text" name="imgUrl" placeholder="Image url" className="input input-bordered" required />
+                    </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
