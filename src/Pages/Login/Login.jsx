@@ -20,7 +20,7 @@ const Login = () => {
         // signin with email and password
         signIn(email, password)
         .then(result =>{
-            console.log(result.user.email);
+            console.log(result.user);
              // naviget after login
              navigate(location?.state ? location.state : "/");
         })
